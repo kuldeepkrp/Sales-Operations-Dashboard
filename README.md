@@ -1,56 +1,91 @@
 # Sales-Operations-Dashboard
 End-to-end sales analysis using SQL and Power BI
- Our Awesome Customer Analytics Project! 
 
-Hey there!  Welcome to our little deep dive into understanding customers. Think of this project as our way of getting to know our shoppers better, using some clever data tricks and neat visualisations. We wanted to find out:
+Sales Performance Analysis Project
 
-*   Who are our most loyal customers?
-*   How is our revenue growing over time?
-*   Are we seeing any exciting month-to-month changes?
-*   Who are our 'whale' customers (the big spenders!)?
-*   How often do people come back to buy from us?
+This project demonstrates a comprehensive sales data analysis workflow, from raw data generation and cleaning to insightful reporting and data visualisation. It utilises Python with `pandas` for data manipulation, `sqlite3` for database integration, and `matplotlib` for basic visualisations. The final output includes a master dataset suitable for Business Intelligence (BI) tools.
 
- What We Did (The Fun Stuff!)
+ Table of Contents
 
-We started with a small, pretend database of customer orders – just like what a real business might have. It had details like who bought what, when, and for how much. Then, we rolled up our sleeves and used some powerful tools:
+- Project Overview(project-overview)
+- Setup and Prerequisites(setup-and-prerequisites)
+- Project Steps & Analysis(project-steps--analysis)
 
-*   SQL (with a twist!): We used advanced SQL commands to dig into the data, like grouping customers, tracking spending over time, and even ranking them.
-*   Python: With Python, we processed the data further and, most importantly, turned all those numbers into super clear charts and graphs.
+  - 1. Data Generation & Initial Cleanup(1-data-generation--initial-cleanup)
+  - 2. Database Integration(2-database-integration)
+  - 3. Performance Analysis - Sales vs. Targets(3-performance-analysis---sales-vs-targets)
+  - 4. Category Performance(4-category-performance)
+  - 5. Monthly Sales Growth Analysis(5-monthly-sales-growth-analysis)
+  - 6. Identifying Regions Below Target(6-identifying-regions-below-target)
+  - 7. High-Value Transactions(7-high-value-transactions)
+  - 8. Visualizing Regional Performance(8-visualizing-regional-performance)
+  - 9. Final Data Export(9-final-data-export)
 
- Key Discoveries
+- Usage(usage)
+- Generated Files(generated-files)
 
-Here’s what we learned from our data adventure:
+Project Overview
 
- 1. Our VIP Customers (Loyalty Stars!)
+This project aims to provide a structured approach to sales data analysis. We simulate a typical 'messy' sales dataset, demonstrate robust data cleaning techniques, integrate with a SQL database, perform various analytical queries to uncover business insights, and prepare a unified dataset for advanced BI tools.
 
-We looked at who buys most often and who spends the most. Turns out, some customers are real superstars! We found our top spenders and those who keep coming back for more. This helps us know who to really appreciate!
+Setup and Prerequisites
 
- 2. Money, Money, Money (Cumulative Revenue)
+To run this notebook, you will need the following Python libraries:
+- `pandas`
+- `numpy`
+- `matplotlib`
+- `sqlite3` (usually built-in with Python)
 
-We watched our total earnings grow day by day. It was cool to see the revenue steadily climbing. It gives us a clear picture of our overall financial health.
+You can install these using pip:
+```bash
+pip install pandas numpy matplotlib
+```
 
- 3. Monthly Ups & Downs (MoM Growth)
+Project Steps & Analysis
 
-We tracked how much money we made each month and compared it to the previous month. Good news: our revenue was growing consistently month after month! This shows we're on a positive trend.
+ 1. Data Generation & Initial Cleanup
+The project begins by generating synthetic sales data, intentionally introducing missing values and duplicates to simulate real-world data challenges. This raw data is then cleaned to ensure accuracy and consistency.
 
- 4. Our Big Spenders
+Key Cleaning Steps:
 
-We used a trick to put customers into groups based on their spending, identifying our 'whale' customers – those who spend a lot. Knowing who these high-value customers are is super important for our strategy.
+*   Duplicate Removal: Ensures each transaction is unique.
+*   Missing Value Imputation: Fills missing sales amounts with the average and missing regions with 'Unknown'.
+*   Date Standardisation: Converts date columns to datetime objects and extracts month names.
 
- 5. How Often Do They Shop? (Order Frequency)
+ 2. Database Integration
+The cleaned sales data (`df_sales`) and the sales targets (`targets`) are loaded into an SQLite database for efficient querying and relational analysis.
 
-We even figured out how many days usually pass between a customer’s purchases. This helps us understand their shopping habits and when they might be ready to buy again.
+ 3. Performance Analysis - Sales vs. Targets
+This analysis compares actual sales against target amounts by region and month, calculating variance and variance percentage.
 
- 6. Who Brings in the Bucks? (Revenue Contribution)
+ 4. Category Performance
+An overview of sales performance by product category, including total revenue, total orders, and average order value.
 
-We made a pie chart to visually show which customers are contributing the most to our total sales. It made it super clear who our biggest revenue drivers are.
+ 5. Monthly Sales Growth Analysis
+Calculates month-over-month sales growth to identify trends and momentum.
 
- Our Toolkit (The Techy Bits)
+ 6. Identifying Regions Below Target
+Highlights specific regions and months where sales fell short of their targets, indicating areas that require attention.
 
-We relied on some fantastic tools to make all this happen:
+ 7. High-Value Transactions
+Identifies and segments high-value transactions based on their amount, helping to understand significant sales events.
 
-*   Python: The programming language that powered everything.
-*   pandas: A handy Python library for crunching numbers and organising data.
-*   sqlite3: Our simple database for storing all the order information.
-*   matplotlib & seaborn: These Python libraries helped us create all the beautiful charts and graphs!
-*   Power BI: For creating interactive dashboards and reports.
+ 8. Visualising Regional Performance
+Generates a bar chart to visually compare actual sales against target amounts for each region.
+
+ 9. Final Data Export
+A master CSV file is generated, combining sales and target data into a single, unified dataset, ideal for Business Intelligence tools like Power BI.
+
+ Usage
+
+To run this project:
+1.  Open the `.ipynb` notebook in Google Colab or Jupyter Notebook.
+2.  Run all cells sequentially.
+3.  The notebook will generate `sales_data.csv`, `targets.csv`, and `final_project_data.csv` locally, and create an SQLite database `sales_company.db`.
+4.  The final `final_project_data.csv` will be automatically downloaded in Colab.
+
+ Generated Files
+-   `sales_data.csv`: The initial messy sales data.
+-   `targets.csv`: The clean target data.
+-   `sales_company.db`: An SQLite database containing `sales_table` and `target_table`.
+-   `final_project_data.csv`: The cleaned and merged dataset, ready for BI tools.
